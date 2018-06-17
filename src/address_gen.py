@@ -6,8 +6,7 @@ import sys
 import time
 import base58_encode as b58
 
-target1 = 'Xpchan'
-target2 = 'Xpchain'
+target = 'Xpchain'
 
 ssl = ctypes.cdll.LoadLibrary (ctypes.util.find_library ('ssl') or 'libeay32')
 
@@ -40,9 +39,7 @@ while True:
     address = b58.base58_encode(hash160, version)
     secretkey = b58.base58_encode(secret, 128+version)
 
-    if address.startswith(target1):
-        print(address,secretkey)
-    if address.startswith(target2):
+    if address.startswith(target):
         print(address,secretkey)
 
     ssl.EC_KEY_free(secp256k1)
