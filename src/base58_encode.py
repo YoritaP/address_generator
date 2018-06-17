@@ -3,7 +3,7 @@ import hashlib
 
 #base58にエンコードする関数
 b58_digits = '123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz'
-def base58_encode(s, version=0): #versionはbitcoinのアドレスですよという感じのヘッダ。アドレスでは先頭が必ず1
+def base58_encode(s, version=0):
     vs = chr(version) + str(s)
     #checksum バージョン+アドレスのsha256を2回かけたやつの先頭バイト
     check = hashlib.sha256(hashlib.sha256(vs).digest()).digest()[:4]

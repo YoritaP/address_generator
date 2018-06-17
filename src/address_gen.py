@@ -3,9 +3,10 @@ import hashlib
 import ctypes
 import ctypes.util
 import sys
+import time
 import base58_encode as b58
 
-target = '1Yorita'
+target = 'Xpchain'
 
 ssl = ctypes.cdll.LoadLibrary (ctypes.util.find_library ('ssl') or 'libeay32')
 
@@ -34,12 +35,11 @@ while True:
     hash160 = h1.digest()
 
     #base58にエンコード
-    version = 0
+    version = 76
     address = b58.base58_encode(hash160, version)
     secretkey = b58.base58_encode(secret, 128+version)
 
     if address.startswith(target):
         print(address,secretkey)
-
 
     ssl.EC_KEY_free(secp256k1)
