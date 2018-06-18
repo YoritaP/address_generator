@@ -1,2 +1,1 @@
-# address_generator
-generate bitcoin address
+# XPcoinアドレス生成器
